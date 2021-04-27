@@ -14,6 +14,16 @@ buildscript {
     }
 }
 
+plugins {
+    id "org.gradle.android.cache-fix" version "2.3.0" apply false
+}
+
+subprojects {
+    plugins.withType(com.android.build.gradle.BasePlugin) {
+        project.apply plugin: "org.gradle.android.cache-fix"
+    }
+}
+
 allprojects {
     repositories {
         google()
